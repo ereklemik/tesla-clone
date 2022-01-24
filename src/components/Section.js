@@ -16,7 +16,7 @@ const Section = ({
       <Buttons>
         <ButtonGroup>
           <LeftButton>{leftBtnText}</LeftButton>
-          <RightButton>{rightBtnText}</RightButton>
+          {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
         </ButtonGroup>
         <DownArrow src="/images/down-arrow.svg" />
       </Buttons>
@@ -29,7 +29,6 @@ export default Section;
 const Wrap = styled.div`
   width: 100vw;
   height: 100vh;
-  background: orange;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -44,6 +43,9 @@ const Wrap = styled.div`
 const ItemText = styled.div`
   padding-top: 15vh;
   text-align: center;
+  h1 {
+    padding-bottom: 7px;
+  }
 `;
 
 const ButtonGroup = styled.div`
