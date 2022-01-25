@@ -39,6 +39,12 @@ const Container = styled.div`
   list-style: none;
   font-family: "Exo", sans-serif;
   font-weight: 600;
+  @media (max-width:768px){
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      margin-top:10px;
+  }
   li {
     padding: 8px;
     margin: 10px;
