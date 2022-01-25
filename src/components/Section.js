@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Fade from "react-reveal/Fade";
 const Section = ({
   title,
   description,
@@ -9,15 +10,19 @@ const Section = ({
 }) => {
   return (
     <Wrap bgImage={backgroundImg}>
-      <ItemText>
-        <h1>{title}</h1>
-        <p>{description}</p>
-      </ItemText>
+      <Fade bottom>
+        <ItemText>
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </ItemText>
+      </Fade>
       <Buttons>
-        <ButtonGroup>
-          <LeftButton>{leftBtnText}</LeftButton>
-          {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
-        </ButtonGroup>
+        <Fade bottom>
+          <ButtonGroup>
+            <LeftButton>{leftBtnText}</LeftButton>
+            {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
+          </ButtonGroup>
+        </Fade>
         <DownArrow src="/images/down-arrow.svg" />
       </Buttons>
     </Wrap>
@@ -42,6 +47,7 @@ const Wrap = styled.div`
 
 const ItemText = styled.div`
   padding-top: 15vh;
+  font-family: "Montserrat", sans-serif;
   text-align: center;
   h1 {
     padding-bottom: 7px;
@@ -51,6 +57,9 @@ const ItemText = styled.div`
 const ButtonGroup = styled.div`
   display: flex;
   margin-bottom: 30px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+
   cursor: pointer;
   @media (max-width: 768px) {
     flex-direction: column;
@@ -84,6 +93,11 @@ const DownArrow = styled.img`
   cursor: pointer;
   overflow-x: hidden;
   animation: animateDown infinite 1.5s;
+  margin-left: 15.5rem;
+
+  @media (max-width: 768px) {
+    margin-left: 6.5rem;
+  }
 `;
 
 const Buttons = styled.div``;
