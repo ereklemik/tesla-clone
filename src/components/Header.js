@@ -2,22 +2,17 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import { selectCars } from "../features/car/carSlice";
+import { useSelector } from "react-redux";
 const Header = () => {
   const [burgerStatus, setBurgerStatus] = useState(false);
+  const cars = useSelector(selectCars);
   return (
     <Container>
       <a>
         <img src="/images/logo.svg" />
       </a>
-      <Menu>
-        <a href="#">Model X</a>
-
-        <a href="#">Model S</a>
-
-        <a href="#">Model 3</a>
-
-        <a href="#">Cybertruck</a>
-      </Menu>
+      <Menu>{cars && cars.map((car, index) => <a key={index} href="#">{car}</a>)}</Menu>
       <RightMenu>
         <a href="#">Shop</a>
         <a href="#">Tesla account</a>
@@ -34,24 +29,10 @@ const Header = () => {
         <li>
           <a href="#">Used Inventory</a>
         </li>
-        <li>
-          <a href="#">Trade-in</a>
-        </li>
-        <li>
-          <a href="#">Roadaster</a>
-        </li>
-        <li>
-          <a href="#">Cybertruck</a>
-        </li>
-        <li>
-          <a href="#">Model S</a>
-        </li>
-        <li>
-          <a href="#">Model 3</a>
-        </li>
-        <li>
-          <a href="#">Delivery</a>
-        </li>
+        {cars && cars.map((car,index) => 
+        <li key={index}><a href="#">{car}</a></li>)}
+        
+        
       </BurgerNav>
     </Container>
   );
