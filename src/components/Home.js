@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Section from "./Section";
-import Footer from "./Footer"
+import Footer from "./Footer";
 const Home = () => {
   return (
     <Container>
@@ -54,7 +54,7 @@ const Home = () => {
         leftBtnText="Shop now"
         rightBtnText=""
       ></Section>
-      <Footer/>
+      <Footer />
     </Container>
   );
 };
@@ -63,5 +63,4 @@ export default Home;
 
 const Container = styled.div`
   height: 100vh;
- 
 `;

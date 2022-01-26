@@ -105,6 +105,10 @@ const BurgerNav = styled.div`
       font-weight: 600;
     }
   }
+
+  @media (max-width:768px){
+    width:100%;
+  }
 `;
 
 const CloseWrapper = styled.div`
