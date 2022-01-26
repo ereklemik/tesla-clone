@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { selectCars } from "../features/car/carSlice";
 import { useSelector } from "react-redux";
@@ -12,11 +11,20 @@ const Header = () => {
       <a>
         <img src="/images/logo.svg" />
       </a>
-      <Menu>{cars && cars.map((car, index) => <a key={index} href="#">{car}</a>)}</Menu>
+      <Menu>
+        {cars &&
+          cars.map((car, index) => (
+            <a key={index} href="#">
+              {car}
+            </a>
+          ))}
+      </Menu>
       <RightMenu>
         <a href="#">Shop</a>
-        <a href="#">Tesla account</a>
-        <CustomMenu onClick={() => setBurgerStatus(true)}></CustomMenu>
+        <a href="#">Account</a>
+        <a href="#" onClick={() => setBurgerStatus(true)}>
+          Menu
+        </a>
       </RightMenu>
 
       <BurgerNav show={burgerStatus}>
@@ -29,10 +37,12 @@ const Header = () => {
         <li>
           <a href="#">Used Inventory</a>
         </li>
-        {cars && cars.map((car,index) => 
-        <li key={index}><a href="#">{car}</a></li>)}
-        
-        
+        {cars &&
+          cars.map((car, index) => (
+            <li key={index}>
+              <a href="#">{car}</a>
+            </li>
+          ))}
       </BurgerNav>
     </Container>
   );
@@ -62,7 +72,12 @@ const Menu = styled.div`
   a {
     font-weight: 600;
     text-transform: uppercase;
-    padding: 0 10px;
+    margin-right: 10px;
+  }
+  a:hover {
+    background-color: rgba(222, 225, 226, 0.8);
+    border-radius: 3px;
+    transition: 0.33s ease;
   }
 
   @media (max-width: 768px) {
@@ -76,10 +91,17 @@ const RightMenu = styled.div`
     text-transform: uppercase;
     margin-right: 10px;
   }
+  a:hover {
+    background-color: rgba(222, 225, 226, 0.8);
+    width: 43px;
+    border-radius: 3px;
+    transition: 0.33s ease;
+  }
 `;
 
-const CustomMenu = styled(MenuIcon)`
+const CustomMenu = styled.div`
   cursor: pointer;
+  display: flex;
 `;
 
 const BurgerNav = styled.div`
@@ -106,8 +128,8 @@ const BurgerNav = styled.div`
     }
   }
 
-  @media (max-width:768px){
-    width:100%;
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;
 
@@ -116,6 +138,7 @@ const CloseWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-const CustomClose = styled(CloseIcon)`
+export const CustomClose = styled(CloseIcon)`
   cursor: pointer;
+  color: red;
 `;
